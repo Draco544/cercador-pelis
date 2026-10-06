@@ -23,7 +23,7 @@
         const resposta = await fetch(urlConsulta)
         const dades = await resposta.json()
 
-        return dades.value
+        return dades
        
     }
 
