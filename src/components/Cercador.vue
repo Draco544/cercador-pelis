@@ -19,6 +19,12 @@
 
     }
 
+    async function neteja(){
+        cerca.value = ''
+        resultats.value = []
+    
+    }
+
 
 
 
@@ -27,24 +33,34 @@
 </script>
 
 <template>
-    <v-app id="inspire">
-        <v-app-bar extended>
-            <v-app-bar-nav-icon></v-app-bar-nav-icon>
-            
-            <v-text-field 
-                label="Cerca una pel·lícula"
-                v-model="cerca"
-                @keyup.enter="ferCerca">
-            </v-text-field>
-            <v-btn
-                icon="mdi-magnify"
-                @click="ferCerca">
-            </v-btn>
-        </v-app-bar>
-
+    
         <v-main>
             
             <v-container>
+                <v-div class="d-flex align-center g-2"> 
+                    <v-text-field 
+                        label="Cerca una pel·lícula"
+                        v-model="cerca"
+                        @keyup.enter="ferCerca">
+                    </v-text-field>
+                   
+                </v-div>
+                <v-btn
+                    text="Cercar"
+                    @click="ferCerca">
+                </v-btn>
+                <v-btn
+                    text="neteja"
+                   @click="neteja">
+                </v-btn>
+
+                <br>
+                <br>
+                <v-card v-if="!cerca">
+                    <v-card-text>
+                        Fes una cerca per buscar contingut
+                    </v-card-text>
+                </v-card>
                 <v-row>     
                 
                     <v-col
@@ -53,9 +69,12 @@
                         cols="12"
                         md="4"  
                     >
-                        <v-card height="500" class="pa-4">
+                        <v-card height="500" class="pa-4  text-center" >
+                            <v-card-title>
+                                {{ pelis.Title }}
+                            </v-card-title>
+                            <br>
                             <v-img height="300" :src="pelis.Poster"></v-img>
-                            <h3>{{ pelis.Title }}</h3>
 
                             <p>{{ pelis.Year }}</p>
                             
@@ -71,26 +90,31 @@
                                 </template>
 
                                 <template v-slot:default="{ isActive }">
-                                    <v-card title="Dialog">
-                                    <v-card-text>
-                                        <b>Title:</b> {{ info?.Title }}<br>
-                                        <b>Runtime:</b> {{ info?.Runtime }}<br>
-                                        <b>Genre:</b> {{ info?.Genre }}<br>
-                                        <b>Director:</b> {{ info?.Director }}<br>
-                                        <b>Writer:</b> {{ info?.Writer }}<br>
-                                        <b>Actors:</b> {{ info?.Actors }}<br>
-                                        <b>Plot:</b> {{ info?.Plot }}<br>
-                                    </v-card-text>
-                                    
-<b></b>
-                                    <v-card-actions>
-                                        <v-spacer></v-spacer>
+                                    <v-card>
+                                        <v-card-title class="justify-center">
+                                            {{ info?.Title }}
+                                        </v-card-title>
+                                        <br>
+                                        <v-img height="300" :src="pelis.Poster"></v-img>
+                                        <br>
+                                        <v-card-text>
+                                            <b>Runtime:</b> {{ info?.Runtime }}<br>
+                                            <b>Genre:</b> {{ info?.Genre }}<br>
+                                            <b>Director:</b> {{ info?.Director }}<br>
+                                            <b>Writer:</b> {{ info?.Writer }}<br>
+                                            <b>Actors:</b> {{ info?.Actors }}<br>
+                                            <b>Plot:</b> {{ info?.Plot }}<br>
+                                        </v-card-text>
+                                        
+                                        <b></b>
+                                        <v-card-actions>
+                                            <v-spacer></v-spacer>
 
-                                        <v-btn
-                                        text="Close Dialog"
-                                        @click="isActive.value = false"
-                                        ></v-btn>
-                                    </v-card-actions>
+                                            <v-btn
+                                            text="Cerrrar"
+                                            @click="isActive.value = false"
+                                            ></v-btn>
+                                        </v-card-actions>
                                     </v-card>
                                 </template>
                             </v-dialog>
@@ -103,5 +127,4 @@
                 </v-row>
             </v-container>
         </v-main>
-    </v-app>
 </template>
