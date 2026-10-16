@@ -1,12 +1,14 @@
 <script setup>
 
     import { ref } from 'vue'
-    import { buscar, buscarInfo } from '@/services/communicationManager'
+    import { buscar } from '@/services/communicationManager'
     import tema from '@/puglins/tema'
+    import FichaPeli from './FichaPeli.vue'
+
 
     const cerca = ref('')
     const resultats = ref ([])
-    const info = ref ([])
+    
 
 
     async function ferCerca(){
@@ -14,20 +16,11 @@
         
     }
 
-    async function obtenirInfo(id){
-        info.value = await buscarInfo(id)
-        
-
-    }
-
     async function neteja(){
         cerca.value = ''
         resultats.value = []
     
     }
-
-
-
 
 
 
@@ -103,154 +96,19 @@
 
             <v-row class="mt-8">
 
-    <v-col
-        v-for="pelis in resultats"
-        :key="pelis.imdbID"
-        cols="12"
-        sm="6"
-        md="4"
-    >
-
-        <v-card
-            class="pelicula"
-            elevation="5"
-        >
-
-            <!-- BARRA SUPERIOR -->
-            <div class="barra"></div>
-
-            <!-- TÍTULO -->
-            <v-card-title class="titol-pelicula">
-                {{ pelis.Title }}
-            </v-card-title>
-
-            <!-- PÓSTER -->
-            <v-img
-                height="300"
-                :src="pelis.Poster"
-                contain
-                class="poster"
-            />
-
-            <!-- AÑO -->
-            <p class="any">
-                {{ pelis.Year }}
-            </p>
-
-
-            <!-- ========================= -->
-            <!-- V-DIALOG -->
-            <!-- ========================= -->
-
-            <v-dialog max-width="600">
-
-                <!-- BOTÓN QUE ABRE EL DIALOG -->
-
-                <template
-                    v-slot:activator="{ props: activatorProps }"
+                <v-col
+                    v-for="pelis in resultats"
+                    :key="pelis.imdbID"
+                    cols="12"
+                    sm="6"
+                    md="4"
                 >
 
-                    <v-btn
-                        v-bind="activatorProps"
-                        color="primary"
-                        variant="flat"
-                        class="mb-5"
-                        @click="obtenirInfo(pelis.imdbID)"
-                    >
-                        Més info
-                    </v-btn>
+                    <ficha-peli :pelis = "pelis"></ficha-peli>
 
-                </template>
+                </v-col>
 
-
-                <!-- CONTENIDO DEL DIALOG -->
-
-                <template v-slot:default="{ isActive }">
-
-                    <v-card class="dialog">
-
-                        <!-- TÍTULO -->
-
-                        <v-card-title class="dialog-titol">
-
-                            {{ info?.Title }}
-
-                        </v-card-title>
-
-
-                        <!-- POSTER -->
-
-                        <v-img
-                            height="350"
-                            :src="info?.Poster || pelis.Poster"
-                            contain
-                        />
-
-
-                        <!-- INFORMACIÓN -->
-
-                        <v-card-text class="dialog-text">
-
-                            <p>
-                                <b>Runtime:</b>
-                                {{ info?.Runtime }}
-                            </p>
-
-                            <p>
-                                <b>Genre:</b>
-                                {{ info?.Genre }}
-                            </p>
-
-                            <p>
-                                <b>Director:</b>
-                                {{ info?.Director }}
-                            </p>
-
-                            <p>
-                                <b>Writer:</b>
-                                {{ info?.Writer }}
-                            </p>
-
-                            <p>
-                                <b>Actors:</b>
-                                {{ info?.Actors }}
-                            </p>
-
-                            <p>
-                                <b>Plot:</b>
-                                {{ info?.Plot }}
-                            </p>
-
-                        </v-card-text>
-
-
-                        <!-- BOTÓN CERRAR -->
-
-                        <v-card-actions>
-
-                            <v-spacer></v-spacer>
-
-                            <v-btn
-                                color="primary"
-                                variant="flat"
-                                @click="isActive.value = false"
-                            >
-                                Cerrar
-                            </v-btn>
-
-                        </v-card-actions>
-
-                    </v-card>
-
-                </template>
-
-            </v-dialog>
-
-        </v-card>
-
-    </v-col>
-
-</v-row>
+            </v-row>
 
         </v-container>
 
