@@ -22,6 +22,7 @@
     <v-card
             class="pelicula"
             elevation="5"
+            
         >
 
             <!-- BARRA SUPERIOR -->

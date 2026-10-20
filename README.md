@@ -1,38 +1,97 @@
-# cercador-pelis
+# Cercador de Pel·lícules
 
-This template should help get you started developing with Vue 3 in Vite.
+Aplicació web per cercar i consultar informació sobre pel·lícules. El projecte està desenvolupat amb Vue 3 i Vite.
 
-## Recommended IDE Setup
+## Demo
 
-[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+Aplicació disponible en:
 
-## Recommended Browser Setup
+http://a25adrurbrub.dam.inspedralbes.cat/cercador/
 
-- Chromium-based browsers (Chrome, Edge, Brave, etc.):
-  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)
-  - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
-- Firefox:
-  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-  - [Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
+## Repositori
 
-## Customize configuration
+https://github.com/Draco544/cercador-pelis
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+## Funcionalitats
 
-## Project Setup
+- Cerca de pel·lícules.
+- Visualització dels resultats de la cerca.
+- Consulta de la informació de les pel·lícules.
+- Interfície web desenvolupada amb Vue 3.
+- Disseny adaptable a diferents resolucions.
 
-```sh
+## Tecnologies
+
+- Vue 3
+- Vite
+- JavaScript
+- HTML5
+- CSS
+- npm
+
+## Estructura del projecte
+
+```text
+cercador-pelis/
+├── public/
+├── src/
+├── .vscode/
+├── index.html
+├── package.json
+├── package-lock.json
+├── jsconfig.json
+├── vite.config.js
+└── README.md
+```
+
+## Instal·lació
+
+Cal tenir instal·lats Node.js i npm.
+
+Clonar el repositori:
+
+```bash
+git clone https://github.com/Draco544/cercador-pelis.git
+```
+
+Entrar al directori del projecte:
+
+```bash
+cd cercador-pelis
+```
+
+Instal·lar les dependències:
+
+```bash
 npm install
 ```
 
-### Compile and Hot-Reload for Development
+## Desenvolupament
 
-```sh
+Per iniciar el servidor de desenvolupament:
+
+```bash
 npm run dev
 ```
 
-### Compile and Minify for Production
+Vite mostrarà a la terminal l'adreça local on s'està executant l'aplicació.
 
-```sh
+## Compilació
+
+Per generar la versió de producció:
+
+```bash
 npm run build
 ```
+
+## Desenvolupament
+
+El codi de l'aplicació es troba principalment dins del directori `src/`.
+
+Els recursos públics es troben dins del directori `public/`.
+
+## Autor
+
+Draco544
+
+Projecte desenvolupat per a finalitats educatives.
